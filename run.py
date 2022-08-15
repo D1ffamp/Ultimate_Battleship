@@ -41,3 +41,10 @@ class Board:
             if self.type == "player":
                 self.board[x][y] = "@"
 
+def validate_coodinates():
+def populate_board():
+def make_quess():
+def play_game():
+def new_game():
+
+
