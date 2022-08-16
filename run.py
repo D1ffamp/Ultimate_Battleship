@@ -65,12 +65,12 @@ class Battleship:
             x_row = input("Enter the row of the ship: ")
             while x_row not in '12345678':
                 print('Not an appropriate choice, please select a valid row')
-                x_row = input("Enter the row of the ship: ")
+                x_row = input("Enter the row of the ship:\n ")
 
             y_column = input("Enter the column letter of the ship: ").upper()
             while y_column not in "ABCDEFGH":
                 print('Not an appropriate choice, please select valid column')
-                y_column = input("Enter the column letter of ship: ").upper()
+                y_column = input("Enter the column letter of ship:\n ").upper()
             return int(x_row) - 1, Board.convert_letters_to_numbers()[y_column]
         except ValueError and KeyError:
             print("Not a valid input")
