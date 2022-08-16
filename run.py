@@ -89,36 +89,37 @@ class Battleship:
 
 def run_game():
     computer_board = Board([[" "] * 8 for i in range(8)])
-    user_quess_board = Board([[" "] * 8 for i in range(8)])
+    user_guess_board = Board([[" "] * 8 for i in range(8)])
     Battleship.create_ships(computer_board)
     #start 10 turns
     turns = 10
     while turns > 0:
         Board.print_board(user_guess_board)
-        #get user input
+        #get user inputs
         user_x_row, user_y_column = Battleship.get_user_input(object)
-        #check if duplicate guess
-    while user_guess_board.board[user_x_row][user_y_column] == "-" or user_guess_board.board[user_x_row][user_y_column] == "X":
-      print("You guessed that one already")
-      user_x_row, user_y_column = Battleship.get_user_input(object)
-    #check for hit or miss
+        #check for dublicate inputs
+        while user_guess_board.board[user_x_row][user_y_column] == "-" or user_guess_board.board[user_x_row][user_y_column] == "X":
+            print("Already quessed, try again")
+            user_x_row, user_y_column = Battleship.get_user_input(object)
+        #check for hit or miss
     if computer_board.board[user_x_row][user_y_column] == "X":
-      print("You sunk 1 of my battleship!")
-      user_guess_board.board[user_x_row][user_y_column] = "X"
+        print("You sunk a battleship!")
+        user_guess_board.board[user_x_row][user_y_column] = "X"
     else:
-      print("You missed my battleship!")
-      user_guess_board.board[user_x_row][user_y_column] = "-"
-    #check for win or lose
+        print("That's a miss")
+        user_guess_board.board[user_x_row][user_y_column] = "-"
+
+    #check for win condition
     if Battleship.count_hit_ships(user_guess_board) == 5:
-      print("You hit all 5 battleships!")
-      break
+        print("you destroyed all battleships")
+        run_game()
     else:
         turns -= 1
-        print(f"You have {turns} turns remaining")
+        print(f"You have {turns} left")
         if turns == 0:
-            print("Sorry you ran out of turns")
+            print("No turns left, too bad!")
             Board.print_board(user_guess_board)
-            break
+            
 
 if __name__ == '__main__':
-  run_game()
+    run_game()
