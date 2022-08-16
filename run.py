@@ -98,7 +98,8 @@ def run_game():
         #get user inputs
         user_x_row, user_y_column = Battleship.get_user_input(object)
         #check for dublicate inputs
-        while user_guess_board.board[user_x_row][user_y_column] == "-" or user_guess_board.board[user_x_row][user_y_column] == "X":
+        while user_guess_board.board[user_x_row][user_y_column] == "-" \
+            or user_guess_board.board[user_x_row][user_y_column] == "X":
             print("Already quessed, try again")
             user_x_row, user_y_column = Battleship.get_user_input(object)
         #check for hit or miss
